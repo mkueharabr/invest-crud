@@ -1,20 +1,37 @@
 package br.com.fiap.investimento.test;
 
+import javax.swing.JOptionPane;
+
+import br.com.fiap.investimento.business.InvestidorBusiness;
+import br.com.fiap.investimento.exceptions.DadoNaoAlteradoException;
+import br.com.fiap.investimento.model.InvestidorPF;
+
 public class InvestidorTelaCadastroTest {
 
 	public static void main(String[] args) {
 
-		//Dados digitados pelo usuário
-		String cpf = "999.999.999-99";
-		String nome = "Alvaro Morata";
+		try {
+			//Dados digitados pelo usuï¿½rio
+			String cpf = "999.999.999-99";
+			String nome = "Alvaro Morata";
+			
+			// Instanciar o objeto
+			InvestidorPF invPF = new InvestidorPF();
+			invPF.setCpf(cpf);
+			invPF.setNomeInvestidor(nome);
+			
+			// Executar o mï¿½todo do business para efeuar o Cadastro
+			InvestidorBusiness business = new InvestidorBusiness();
+			business.cadastrarInvestidor(invPF);
+			
+			// Exibir mensagem para o usuï¿½rio
+			JOptionPane.showMessageDialog(null, "Investidor cadastrado com sucesso!");
+			
+		} catch (DadoNaoAlteradoException e) {
+			JOptionPane.showMessageDialog(null, "NÃ£o foi possÃ­vel efetuar a alteraÃ§Ã£o. Por favor verifique os dados digitados.");
+		}
 		
-		// Instanciar o objeto
 		
-		
-		// Executar o método do business para efeuar o Cadastro
-		
-		
-		// Exibir mensagem para o usuário
 		
 	}
 
